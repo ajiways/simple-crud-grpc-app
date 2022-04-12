@@ -1,0 +1,31 @@
+syntax = "proto3";
+import "google/protobuf/empty.proto";
+
+package products;
+
+service ProductsService {
+  rpc FindAll (google.protobuf.Empty) returns (FindAllProductsResponse);
+  rpc AddOne (AddOneProductRequest) returns (AddOneProductResponse);
+}
+
+message Product {
+  string id = 1;
+  int32 price = 2;
+  string name = 3;
+  string description = 4;
+}
+
+message AddOneProductRequest {
+  int32 price = 1;
+  string name = 2;
+  string description = 3;
+}
+
+message AddOneProductResponse {
+  Product response = 1;
+}
+
+message FindAllProductsResponse {
+  repeated Product products = 1;
+}
+
