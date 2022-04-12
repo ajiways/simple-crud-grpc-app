@@ -6,6 +6,8 @@ package products;
 service ProductsService {
   rpc FindAll (google.protobuf.Empty) returns (FindAllProductsResponse);
   rpc AddOne (AddOneProductRequest) returns (AddOneProductResponse);
+  rpc DeleteOne (DeleteOneRequest) returns (DeleteOneResponse);
+  rpc UpdateOne (UpdateOneRequest) returns (UpdateOneResponse);
 }
 
 message Product {
@@ -29,3 +31,25 @@ message FindAllProductsResponse {
   repeated Product products = 1;
 }
 
+message DeleteOneRequest {
+  string id = 1;
+}
+
+message DeleteOneResponse {
+  Product deleted = 1;
+}
+
+message UpdateOneBody {
+  optional string newname = 1;
+  optional string newdesription = 2;
+  optional int32 newprice = 3;
+}
+
+message UpdateOneRequest {
+  string id = 1;
+  UpdateOneBody body = 2;
+}
+
+message UpdateOneResponse {
+  Product updated = 1;
+}
