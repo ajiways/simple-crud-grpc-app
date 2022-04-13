@@ -11,7 +11,14 @@ import { UpdateOneResponse__Output } from './contracts/products/UpdateOneRespons
 
 @Injectable()
 export class AppService {
-  private mockDBxd: Product__Output[] = [];
+  private mockDBxd: Product__Output[] = [
+    {
+      description: 'test',
+      id: 'test',
+      name: 'test',
+      price: 123,
+    },
+  ];
 
   findAll(): FindAllProductsResponse__Output {
     return { products: this.mockDBxd };
